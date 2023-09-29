@@ -188,53 +188,26 @@ a:focus-visible {
 
 /* || TABLES - GENERAL */
 
-thead,
-tbody,
-tr {
-  display: flex;
-}
-
-th {
-  display: flex;
-  width: fit-content;
-}
-
-.table {
-  font-size: 1rem;
+/* Table Styles */
+table {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  color: var(--TABLE-COLOR);
-  gap: 0.1em;
+
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.table__button {
-  padding: 0.25em;
-  font-size: 1.5rem;
-  color: var(--TABLE-COLOR);
-}
-
-.table__thead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.table__th,
-.table__cell {
-  background-color: var(--TABLE-BGCOLOR);
+/* Table Header Styles */
+th {
+  font-weight: bold;
   text-align: left;
-  border: 1px solid var(--TABLE-COLOR);
-  padding: 0.5em;
+  padding: 8px;
+  border: 1px solid #ddd;
 }
 
-.table__cell:last-child {
-  display: grid;
-  place-content: center;
-}
-
-.table__cell--inactive {
-  background-color: var(--INACTIVE);
+/* Table Cell Styles */
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
 }
 
 /* ||  NOTE */
@@ -376,4 +349,75 @@ th {
   .form__action-buttons {
     position: static;
   }
+}
+
+/* Popup Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal */
+.modal {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 20px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #333;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

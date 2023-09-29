@@ -44,34 +44,43 @@ const NotesList = () => {
     const tableContent =
       ids?.length &&
       filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
-    console.log("table");
-    console.log(tableContent);
+    //console.log("table");
+    //console.log({ tableContent });
     content = (
-      <table className="table table--notes">
-        <thead className="table__thead">
+      <table className="">
+        <thead className="">
           <tr>
-            <th scope="col" className="table__th note__status">
-              Username
+            <th scope="col" className="">
+              Status
             </th>
-            <th scope="col" className="table__th note__branchName">
+            <th scope="col" className="">
               Branch Name
             </th>
-            <th scope="col" className="table__th note__itemType">
-              Item Type
+            <th scope="col" className="">
+              Checked By
             </th>
-            <th scope="col" className="table__th note__model">
+            <th scope="col" className="">
               Model
             </th>
-            <th scope="col" className="table__th note__serialNumber">
+            <th scope="col" className="">
+              Item Type
+            </th>
+            <th scope="col" className="">
               Serial Number
             </th>
-            <th scope="col" className="table__th note__problem">
+            <th scope="col" className="">
               Problem
             </th>
-            <th scope="col" className="table__th note__username">
-              Owner
+            <th scope="col" className="">
+              Maintened By
             </th>
-            <th scope="col" className="table__th note__edit">
+            <th scope="col" className="">
+              Assigned To
+            </th>
+            <th scope="col" className="">
+              Required Equipments
+            </th>
+            <th scope="col" className="">
               Edit
             </th>
           </tr>

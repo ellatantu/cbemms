@@ -17,7 +17,7 @@ import { ROLES } from "./config/roles";
 import useTitle from "./hooks/useTitle";
 
 function App() {
-  useTitle("Dan D. Repairs");
+  useTitle("CBEMMS");
 
   return (
     <Routes>
@@ -52,6 +52,9 @@ function App() {
                   <Route path=":id" element={<EditNote />} />
                   <Route path="new" element={<NewNote />} />
                 </Route>
+                {/* <Route path="add">
+                  <Route path="new" element={<Modal />} />
+                </Route> */}
               </Route>
               {/* End Dash */}
             </Route>

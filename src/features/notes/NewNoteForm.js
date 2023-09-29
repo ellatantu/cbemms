@@ -22,12 +22,15 @@ const NewNoteForm = ({ users }) => {
   const [values, setValues] = useState(initialState);
   //const [text, setText] = useState({});
   const [userId, setUserId] = useState(users[0].id);
+  const [userId1, setUserId1] = useState(users[0].id);
+  const [userId2, setUserId2] = useState(users[0].id);
+  //console.log({ userId1 });
 
   useEffect(() => {
     if (isSuccess) {
       setValues({});
       //setText({});
-      setUserId("");
+    
       navigate("/dash/notes");
     }
   }, [isSuccess, navigate]);
@@ -39,13 +42,20 @@ const NewNoteForm = ({ users }) => {
     });
   //const onTextChanged = (e) => setText(e.target.value);
   const onUserIdChanged = (e) => setUserId(e.target.value);
+  const onUserIdChanged1 = (e) => setUserId1(e.target.value);
+  const onUserIdChanged2 = (e) => setUserId2(e.target.value);
 
   const canSave = [values.Branch_Name, userId].every(Boolean) && !isLoading;
 
   const onSaveNoteClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
-      await addNewNote({ Checked_By: userId, ...values });
+      await addNewNote({
+        Checked_By: userId,
+        Mantained_By: userId1,
+        Assigned_To: userId2,
+        ...values,
+      });
     }
   };
 
@@ -162,6 +172,19 @@ const NewNoteForm = ({ users }) => {
         >
           {options}
         </select>
+        {/* 
+        <label className="form__label" htmlFor="title">
+          Mantained By:
+        </label>
+        <input
+          className={`form__input ${validTitleClass}`}
+          id="title"
+          name="Mantained_By"
+          type="text"
+          autoComplete="off"
+          value={values.Mantained_By}
+          onChange={handelChange}
+        /> */}
 
         <label
           className="form__label form__checkbox-container"
@@ -171,10 +194,10 @@ const NewNoteForm = ({ users }) => {
         </label>
         <select
           id="username"
-          name="username"
+          name="Mantained_By"
           className="form__select"
-          value={userId}
-          onChange={onUserIdChanged}
+          value={userId1}
+          onChange={onUserIdChanged1}
         >
           {options}
         </select>
@@ -189,8 +212,8 @@ const NewNoteForm = ({ users }) => {
           id="username"
           name="username"
           className="form__select"
-          value={userId}
-          onChange={onUserIdChanged}
+          value={userId2}
+          onChange={onUserIdChanged2}
         >
           {options}
         </select>

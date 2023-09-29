@@ -6,15 +6,18 @@ import {
   faUserGear,
   faUserPlus,
   faRightFromBracket,
+  faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 import useAuth from "../hooks/useAuth";
 import PulseLoader from "react-spinners/PulseLoader";
+import NewForm from "../img/NewForm.pdf";
 
 const DASH_REGEX = /^\/dash(\/)?$/;
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
+//const ADD_REGEX = /^\/dash\/add(\/)?$/;
 
 const DashHeader = () => {
   const { isManager, isAdmin } = useAuth();
@@ -33,12 +36,14 @@ const DashHeader = () => {
   const onNewUserClicked = () => navigate("/dash/users/new");
   const onNotesClicked = () => navigate("/dash/notes");
   const onUsersClicked = () => navigate("/dash/users");
+  const onAddClicked = () => navigate("");
 
   let dashClass = null;
   if (
     !DASH_REGEX.test(pathname) &&
     !NOTES_REGEX.test(pathname) &&
     !USERS_REGEX.test(pathname)
+    //!ADD_REGEX.test(pathname)
   ) {
     dashClass = "dash-header__container--small";
   }
@@ -89,6 +94,14 @@ const DashHeader = () => {
     );
   }
 
+  const newAddButton = (
+    <a href={NewForm} download="NewForm">
+      <button className="icon-button" title="More" onClick={onAddClicked}>
+        <FontAwesomeIcon icon={faStickyNote} />
+      </button>
+    </a>
+  );
+
   const logoutButton = (
     <button className="icon-button" title="Logout" onClick={sendLogout}>
       <FontAwesomeIcon icon={faRightFromBracket} />
@@ -105,6 +118,7 @@ const DashHeader = () => {
       <>
         {newNoteButton}
         {newUserButton}
+        {newAddButton}
         {notesButton}
         {userButton}
         {logoutButton}
@@ -119,7 +133,7 @@ const DashHeader = () => {
       <header className="dash-header">
         <div className={`dash-header__container ${dashClass}`}>
           <Link to="/dash">
-            <h1 className="dash-header__title">techNotes</h1>
+            <h1 className="dash-header__title">CBEMMS</h1>
           </Link>
           <nav className="dash-header__nav">{buttonContent}</nav>
         </div>
